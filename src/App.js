@@ -1,8 +1,17 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
 import AdminScreen from './components/AdminScreen';
 import UserScreen from './components/UserScreen';
 import './App.css';
+
+function NavTitle() {
+  const location = useLocation();
+  return (
+    <h1>
+      {location.pathname === '/admin' ? 'Quản Lý Cửa Hàng' : 'My Dream Closet by Tracy' }
+    </h1>
+  );
+}
 
 function App() {
   return (
@@ -10,7 +19,7 @@ function App() {
       <div className="App">
         <nav className="navbar">
           <div className="nav-container">
-            <h1>Quản Lý Cửa Hàng</h1>
+            <NavTitle />
             <div className="nav-links">
               <Link to="/">Giao Diện Người Dùng</Link>
               <Link to="/admin">Giao Diện Quản Trị</Link>

@@ -71,7 +71,7 @@ function AdminScreen() {
       <div className="admin-header">
         <h2>Bảng Điều Khiển Quản Trị</h2>
         <button className="add-button" onClick={handleAddItem}>
-          + Thêm Sản Phẩm Mới
+          Thêm Sản Phẩm Mới
         </button>
       </div>
 

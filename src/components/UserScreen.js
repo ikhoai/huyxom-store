@@ -38,7 +38,9 @@ function UserScreen() {
               value={userId}
               onChange={(e) => setUserId(e.target.value)}
             />
-            <button type="submit">Tìm Kiếm</button>
+            <button type="submit">
+              <span className="search-icon">&#128269;</span> Tìm Kiếm
+            </button>
           </div>
         </form>
       </div>
