@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { searchItemsByUserId } from '../services/itemService';
-import ItemCard from './ItemCard';
+import ItemList from './ItemList';
 
 function UserScreen() {
   const [userId, setUserId] = useState('');
@@ -25,6 +25,11 @@ function UserScreen() {
       setIsLoading(false);
     }
   };
+
+  // Dummy handlers for edit/delete - we won't implement these functions
+  // in the user screen, but ItemList component requires them
+  const handleEditItem = () => {};
+  const handleDeleteItem = () => {};
 
   return (
     <div className="user-screen">
@@ -51,16 +56,22 @@ function UserScreen() {
         ) : hasSearched ? (
           searchResults.length > 0 ? (
             <div className="item-results">
-              <h3>Sản phẩm của người dùng: {userId}</h3>
-              <div className="item-grid">
-                {searchResults.map(item => (
-                  <ItemCard key={item.id} item={item} />
-                ))}
+              <div className="results-header">
+                <h3>Sản phẩm của người dùng: <span className="highlight-text">{userId}</span></h3>
+                <div className="results-count">{searchResults.length} sản phẩm được tìm thấy</div>
               </div>
+              <ItemList 
+                items={searchResults} 
+                onEdit={handleEditItem} 
+                onDelete={handleDeleteItem} 
+              />
             </div>
           ) : (
             <div className="no-results">
-              Không tìm thấy sản phẩm nào cho mã người dùng này.
+              <div className="empty-state">
+                <div className="empty-icon">🔍</div>
+                <div>Không tìm thấy sản phẩm nào cho mã người dùng này.</div>
+              </div>
             </div>
           )
         ) : null}

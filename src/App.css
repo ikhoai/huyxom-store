@@ -376,14 +376,17 @@ tr:hover {
 /* User Screen */
 .user-screen {
   max-width: 1200px;
+  margin: 0 auto;
   padding: var(--spacing-xl) var(--spacing-md);
 }
 
 .search-container {
   text-align: center;
   margin-bottom: var(--spacing-2xl);
+  background-color: var(--bg-white);
   padding: var(--spacing-xl);
   border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
 }
 
 .search-container h2 {
@@ -883,4 +886,48 @@ form {
 /* Smooth scroll behavior */
 html {
   scroll-behavior: smooth;
+}
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.results-header h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.results-header h3::before {
+  content: "🔍";
+  font-size: 1.2rem;
+}
+
+.results-count {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  background-color: var(--primary-light);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.highlight-text {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.user-screen .item-results {
+  background-color: var(--bg-white);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
 }
