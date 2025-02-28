@@ -2,15 +2,22 @@ FROM node:20-alpine as build
 
 WORKDIR /app
 
+# Set Node memory limits and other optimization flags
+ENV NODE_OPTIONS="--max-old-space-size=1024"
+ENV npm_config_cache=/tmp/.npm
+
+# Copy package files first for better layer caching
 COPY package*.json ./
 
-RUN npm install
+# Use npm ci instead of npm install for more efficient installations
+RUN npm ci --no-audit --no-fund
 
 COPY . .
 
 # Create a .env file for production
 RUN echo "REACT_APP_API_URL=/api" > .env.production
 
+# Build with reduced workers if needed
 RUN npm run build
 
 # Production stage
