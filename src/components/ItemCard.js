@@ -31,6 +31,12 @@ function ItemCard({ item }) {
         <p className="item-type">{item.type}</p>
         <p className="item-price">{formatCurrency(item.price)}</p>
         
+        {item.phone && (
+          <p className="item-phone">
+            <span className="phone-icon">📞</span> {item.phone}
+          </p>
+        )}
+        
         {item.notes && (
           <div className="item-notes">
             <h4>Ghi Chú</h4>

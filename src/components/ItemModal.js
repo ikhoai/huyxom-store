@@ -8,6 +8,7 @@ function ItemModal({ item, onSave, onClose }) {
     type: '',
     notes: '',
     picture: '',
+    phone: '',
     price: 0,
     sold: false,
     paid: false
@@ -135,6 +136,18 @@ function ItemModal({ item, onSave, onClose }) {
               name="picture"
               value={formData.picture}
               onChange={handleChange}
+            />
+          </div>
+          
+          <div className="form-group">
+            <label htmlFor="phone">Số Điện Thoại</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              value={formData.phone || ''}
+              onChange={handleChange}
+              placeholder="Nhập số điện thoại liên hệ"
             />
           </div>
           

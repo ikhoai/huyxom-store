@@ -41,6 +41,7 @@ function ItemList({ items, onEdit, onDelete }) {
               <th>Mã Người Dùng</th>
               <th>Tên Sản Phẩm</th>
               <th>Loại</th>
+              <th>Số Điện Thoại</th>
               <th>Giá</th>
               <th>Trạng Thái</th>
               <th>Thanh Toán</th>
@@ -60,6 +61,7 @@ function ItemList({ items, onEdit, onDelete }) {
                     <div className="item-name">{item.name}</div>
                   </td>
                   <td><span className="type-badge">{item.type}</span></td>
+                  <td className="phone-cell">{item.phone || '-'}</td>
                   <td className="price-cell">{formatCurrency(item.price)}</td>
                   <td>
                     <span className={`status ${item.sold ? 'sold' : 'available'}`}>
@@ -109,7 +111,7 @@ function ItemList({ items, onEdit, onDelete }) {
               ))
             ) : (
               <tr>
-                <td colSpan="8" className="no-items">
+                <td colSpan="9" className="no-items">
                   <div className="empty-state">
                     <div className="empty-icon">📦</div>
                     <div>Không có sản phẩm nào.</div>

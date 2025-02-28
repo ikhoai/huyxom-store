@@ -1,0 +1,89 @@
+version: '3.8'
+
+services:
+  # Frontend React application
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: huyxom-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - huyxom-network
+    restart: unless-stopped
+
+  # Backend API service
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: huyxom-backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    networks:
+      - huyxom-network
+    environment:
+      - NODE_ENV=development
+      - PORT=5000
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=huyxom_store
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres123
+      - JWT_SECRET=huyxom_jwt_secret_key
+      - CORS_ORIGIN=http://localhost
+    restart: on-failure
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+  # PostgreSQL database
+  db:
+    image: postgres:14-alpine
+    container_name: huyxom-db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=huyxom_store
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres123
+    networks:
+      - huyxom-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # pgAdmin for database management (optional, can be commented out in production)
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: huyxom-pgadmin
+    ports:
+      - "8080:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@huyxom.com
+      - PGADMIN_DEFAULT_PASSWORD=adminpgadmin
+    depends_on:
+      - db
+    networks:
+      - huyxom-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+networks:
+  huyxom-network:
+    driver: bridge 

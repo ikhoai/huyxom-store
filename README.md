@@ -1,70 +1,142 @@
-# Getting Started with Create React App
+# Huyxom Store Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, elegant React application for managing a store inventory with Vietnamese interfaces. This application provides a complete solution for tracking products, sales, and payments.
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+Huyxom Store Management System is designed to help store owners and staff manage their inventory through a dual-interface approach:
 
-### `npm start`
+- **Admin Interface**: Comprehensive inventory management with full CRUD operations
+- **User Interface**: Simple search functionality for regular users to find their products
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The system tracks products along with their sales and payment status, providing clear visual differentiation between active inventory and completed transactions.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+### Admin Features
+- View complete inventory in a well-organized tabular format
+- Add new products with detailed information
+- Edit existing product details
+- Delete products
+- Visual separation of active vs. sold & paid items
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### User Features
+- Search for products by user ID
+- View products in a tabular list view
+- See product details including status and payment information
 
-### `npm run build`
+### Product Management
+- Track product details: ID, user ID, name, type, price, etc.
+- Track sales status (sold/available)
+- Track payment status (paid/unpaid)
+- Automatic currency formatting (USD to VND)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Technical Implementation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Technology Stack
+- **Frontend Framework**: React (v19.0.0)
+- **Routing**: React Router DOM (v7.2.0)
+- **State Management**: React Hooks
+- **Data Persistence**: Browser localStorage
+- **Styling**: Custom CSS with CSS variables
+- **Testing**: Jest and React Testing Library
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Key Components
+- `AdminScreen`: Main interface for administrators
+- `UserScreen`: Interface for regular users to search products
+- `ItemList`: Displays products in a tabular format
+- `ItemCard`: Card representation of individual products (used in some views)
+- `ItemModal`: Form for adding/editing product details
+- `SoldAndPaidItemsList`: Alternative component for showing sold & paid items
 
-### `npm run eject`
+### Data Structure
+Products are stored with the following properties:
+- `id`: Unique identifier
+- `number`: Product reference number
+- `userid`: Owner/user ID associated with the product
+- `name`: Product name
+- `type`: Product category/type
+- `notes`: Additional product information
+- `picture`: URL to product image
+- `phone`: Contact phone number for the product
+- `price`: Base price in USD (displayed in VND)
+- `sold`: Boolean indicating whether the item is sold
+- `paid`: Boolean indicating whether payment is received
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Project Structure
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+huyxom-store/
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── AdminScreen.js     # Admin interface
+│   │   ├── UserScreen.js      # User interface
+│   │   ├── ItemList.js        # Table display of items
+│   │   ├── ItemCard.js        # Card display of items
+│   │   ├── ItemModal.js       # Form for adding/editing items
+│   │   └── SoldAndPaidItemsList.js # Alternative listing component
+│   ├── services/
+│   │   └── itemService.js     # Data management and CRUD operations
+│   ├── styles/
+│   ├── App.js                 # Main application component with routing
+│   ├── App.css                # Application styles
+│   └── index.js               # Application entry point
+└── package.json               # Project dependencies and scripts
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Design Philosophy
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The application employs a modern, clean design with:
+- Consistent color scheme using CSS variables
+- Clear visual hierarchy with proper spacing
+- Interactive elements with subtle animations and hover effects
+- Responsive design that works on various devices
+- Clear status indicators with color-coding
 
-## Learn More
+## Data Management
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The application uses browser localStorage for data persistence:
+- Products are stored in a local storage key: `store_items`
+- Sample data is automatically loaded if no existing data is found
+- All CRUD operations manipulate this localStorage data
+- Simulated network delays provide a realistic API experience
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Getting Started
 
-### Code Splitting
+### Installation
+1. Clone the repository
+2. Install dependencies with `npm install`
+3. Start the development server with `npm start`
+4. Access the application at http://localhost:3000
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Usage
+1. **Admin View** (`/admin`): Manage all inventory items
+   - Add new products
+   - Edit existing products
+   - Delete products
+   - View products organized by active and completed status
 
-### Analyzing the Bundle Size
+2. **User View** (`/`): Search for products by user ID
+   - Enter a user ID in the search bar
+   - View matching products in a tabular list
+   - See detailed status information
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Currency Conversion
 
-### Making a Progressive Web App
+The application stores prices in USD but displays them in VND with the following conversion:
+- 1 USD = 23,000 VND (fixed conversion rate)
+- Formatting follows Vietnamese currency standards
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Future Enhancements
 
-### Advanced Configuration
+Potential areas for expansion:
+- Backend integration with a real database
+- User authentication system
+- Advanced filtering and sorting options
+- Reporting features
+- Mobile application version
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## License
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is developed for internal use at Huyxom Store.
