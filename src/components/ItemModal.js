@@ -71,18 +71,6 @@ function ItemModal({ item, onSave, onClose }) {
         </div>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="number">Mã Sản Phẩm</label>
-            <input
-              type="text"
-              id="number"
-              name="number"
-              value={formData.number}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          
-          <div className="form-group">
             <label htmlFor="userid">Mã Người Dùng</label>
             <input
               type="text"
@@ -91,6 +79,18 @@ function ItemModal({ item, onSave, onClose }) {
               value={formData.userid}
               onChange={handleChange}
               required
+            />
+          </div>
+          
+          <div className="form-group">
+            <label htmlFor="phone">Số Điện Thoại</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              value={formData.phone || ''}
+              onChange={handleChange}
+              placeholder="Nhập số điện thoại liên hệ"
             />
           </div>
           
@@ -105,6 +105,18 @@ function ItemModal({ item, onSave, onClose }) {
               required
             />
           </div>
+          
+          {/* <div className="form-group">
+            <label htmlFor="number">Mã Sản Phẩm</label>
+            <input
+              type="text"
+              id="number"
+              name="number"
+              value={formData.number}
+              onChange={handleChange}
+              required
+            />
+          </div> */}
           
           <div className="form-group">
             <label htmlFor="type">Loại</label>
@@ -136,18 +148,6 @@ function ItemModal({ item, onSave, onClose }) {
               name="picture"
               value={formData.picture}
               onChange={handleChange}
-            />
-          </div>
-          
-          <div className="form-group">
-            <label htmlFor="phone">Số Điện Thoại</label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={formData.phone || ''}
-              onChange={handleChange}
-              placeholder="Nhập số điện thoại liên hệ"
             />
           </div>
           

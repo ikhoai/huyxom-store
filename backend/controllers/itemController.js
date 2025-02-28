@@ -96,7 +96,7 @@ exports.searchItems = async (req, res, next) => {
       where: {
         [Op.or]: [
           { userid: { [Op.iLike]: searchTerm } },
-          { phone: { [Op.like]: `%${searchTerm}%` } }
+          { phone: searchTerm }
         ]
       },
       order: [['createdAt', 'DESC']]

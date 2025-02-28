@@ -159,7 +159,7 @@ function ItemList({ items, onEdit, onDelete, viewMode = 'admin' }) {
         <table>
           <thead>
             <tr>
-              {viewMode === 'admin' && <th>Mã Số</th>}
+              {/* {viewMode === 'admin' && <th>Mã Số</th>} */}
               <th>Mã Người Dùng</th>
               <th>Tên Sản Phẩm</th>
               {viewMode === 'admin' && <th>Loại</th>}
@@ -177,7 +177,7 @@ function ItemList({ items, onEdit, onDelete, viewMode = 'admin' }) {
                   key={item.id} 
                   className={item.sold && item.paid ? 'greyed-out-item' : ''}
                 >
-                  {viewMode === 'admin' && <td><span className="id-badge">{item.number}</span></td>}
+                  {/* {viewMode === 'admin' && <td><span className="id-badge">{item.number}</span></td>} */}
                   <td>{item.userid}</td>
                   <td>
                     <div className="item-name">{item.name}</div>
