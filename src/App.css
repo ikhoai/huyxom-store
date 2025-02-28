@@ -822,6 +822,119 @@ form {
     width: 100%;
     justify-content: center;
   }
+  
+  /* Mobile styles for UserScreen */
+  .mobile-friendly.user-screen {
+    padding: var(--spacing-sm);
+  }
+  
+  .mobile-friendly .search-container {
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .mobile-friendly .search-container h2 {
+    font-size: 1.4rem;
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .mobile-friendly .search-instruction {
+    font-size: 0.9rem;
+  }
+  
+  .mobile-friendly .search-bar {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .mobile-friendly .search-bar input {
+    width: 100%;
+    padding: 10px;
+    border-radius: var(--radius-sm);
+  }
+  
+  .mobile-friendly .search-bar button {
+    width: 100%;
+    padding: 10px;
+    justify-content: center;
+  }
+  
+  .mobile-friendly .search-examples {
+    margin-top: var(--spacing-sm);
+    font-size: 0.8rem;
+  }
+  
+  .mobile-friendly .results-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+  }
+  
+  .mobile-friendly .results-header h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0;
+  }
+  
+  .mobile-friendly .results-count {
+    font-size: 0.9rem;
+  }
+  
+  .mobile-friendly .item-list {
+    overflow-x: auto;
+  }
+  
+  .mobile-friendly .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .mobile-friendly table {
+    min-width: 650px;
+  }
+  
+  .mobile-friendly th, 
+  .mobile-friendly td {
+    padding: var(--spacing-xs);
+    font-size: 0.9rem;
+  }
+  
+  .mobile-friendly .action-buttons {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+  
+  .mobile-friendly .action-buttons button {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 0.8rem;
+  }
+}
+
+/* Smaller mobile screens */
+@media (max-width: 480px) {
+  .mobile-friendly .search-container h2 {
+    font-size: 1.2rem;
+  }
+  
+  .mobile-friendly .search-instruction {
+    font-size: 0.8rem;
+  }
+  
+  .mobile-friendly .no-results .empty-state {
+    padding: var(--spacing-md);
+  }
+  
+  .mobile-friendly .empty-icon {
+    font-size: 2.5rem;
+  }
+  
+  .mobile-friendly .status {
+    font-size: 0.7rem;
+  }
+  
+  .mobile-friendly .status-icon {
+    margin-right: 2px;
+  }
 }
 
 .admin-actions {
@@ -981,4 +1094,206 @@ html {
   font-size: 1.2rem;
   margin-right: var(--spacing-xs);
   vertical-align: middle;
+}
+
+/* Mobile-specific styles for the card view in ItemList */
+.mobile-items-section {
+  margin-bottom: var(--spacing-lg);
+  background-color: var(--bg-light);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm);
+  transition: var(--transition);
+}
+
+.mobile-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.mobile-section-header h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+}
+
+.section-count {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  background-color: var(--bg-secondary);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+}
+
+.mobile-items-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+
+.mobile-item-card {
+  background-color: var(--bg-white);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.mobile-item-card.completed {
+  opacity: 0.8;
+  background-color: var(--bg-secondary);
+}
+
+.mobile-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.mobile-item-actions {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.mobile-button {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 1rem;
+}
+
+.mobile-item-name {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: var(--spacing-xs);
+  color: var(--text-primary);
+}
+
+.mobile-item-userid {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.mobile-item-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.mobile-item-type {
+  font-size: 0.8rem;
+}
+
+.mobile-item-price {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.mobile-item-phone {
+  font-size: 0.85rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-secondary);
+}
+
+.phone-label {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.mobile-item-status {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.mobile-empty-state {
+  padding: var(--spacing-lg);
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+  .mobile-items-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* User view mobile card styles */
+.mobile-item-card.user-view {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-md);
+  gap: var(--spacing-xs);
+  border-left: 3px solid var(--primary-color);
+}
+
+.mobile-item-card.user-view .mobile-item-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.mobile-item-card.user-view .mobile-item-userid {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+}
+
+.mobile-item-price.user-view {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin: 8px 0;
+}
+
+.mobile-item-status.user-view {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--bg-light);
+  border-radius: var(--radius-sm);
+  padding: 8px;
+  margin-top: 4px;
+}
+
+.mobile-item-status.user-view .status {
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* More space between cards in user view */
+@media (max-width: 768px) {
+  .user-view + .user-view {
+    margin-top: var(--spacing-sm);
+  }
+  
+  .mobile-friendly .item-results {
+    padding: var(--spacing-sm);
+  }
+}
+
+/* Fix overlapping in mobile status indicators for user view */
+@media (max-width: 480px) {
+  .mobile-item-status.user-view {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .mobile-item-status.user-view .status {
+    width: 100%;
+    text-align: center;
+  }
 }

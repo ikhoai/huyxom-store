@@ -8,6 +8,18 @@ function UserScreen() {
   const [hasSearched, setHasSearched] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [searchType, setSearchType] = useState('');
+  // Add state to track if we're in mobile view
+  const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 768);
+
+  // Monitor window resize to update mobile view state
+  React.useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth <= 768);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -30,6 +42,16 @@ function UserScreen() {
         } else {
           setSearchType('both');
         }
+      }
+      
+      // Scroll to results on mobile after search completes
+      if (isMobileView) {
+        setTimeout(() => {
+          document.querySelector('.results-container')?.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }, 300);
       }
     } catch (error) {
       console.error('Lỗi khi tìm kiếm sản phẩm:', error);
@@ -67,20 +89,22 @@ function UserScreen() {
   };
 
   return (
-    <div className="user-screen">
+    <div className="user-screen mobile-friendly">
       <div className="search-container">
         <h2>Tìm Kiếm Sản Phẩm Của Bạn</h2>
         <p className="search-instruction">Nhập mã người dùng hoặc số điện thoại để tìm kiếm</p>
-        <form onSubmit={handleSearch}>
+        <form onSubmit={handleSearch} className="mobile-search-form">
           <div className="search-bar">
             <input
               type="text"
-              placeholder="Nhập mã người dùng hoặc số điện thoại..."
+              placeholder={isMobileView ? "Nhập mã hoặc số điện thoại..." : "Nhập mã người dùng hoặc số điện thoại..."}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
+              autoComplete="off"
             />
             <button type="submit">
-              <span className="search-icon">&#128269;</span> Tìm Kiếm
+              <span className="search-icon">&#128269;</span>
+              {!isMobileView && " Tìm Kiếm"}
             </button>
           </div>
         </form>
@@ -102,7 +126,8 @@ function UserScreen() {
               <ItemList 
                 items={searchResults} 
                 onEdit={handleEditItem} 
-                onDelete={handleDeleteItem} 
+                onDelete={handleDeleteItem}
+                viewMode="user"
               />
             </div>
           ) : (

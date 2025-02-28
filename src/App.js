@@ -22,7 +22,7 @@ function App() {
             <NavTitle />
             <div className="nav-links">
               <Link to="/">Giao Diện Người Dùng</Link>
-              <Link to="/admin">Giao Diện Quản Trị</Link>
+              {/* <Link to="/admin">Giao Diện Quản Trị</Link> */}
             </div>
           </div>
         </nav>
