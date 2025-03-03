@@ -7,8 +7,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     number: {
       type: DataTypes.STRING,
-      allowNull: true,
-      unique: true
+      allowNull: true
+      // Removed unique constraint to allow empty strings
     },
     userid: {
       type: DataTypes.STRING,

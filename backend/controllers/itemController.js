@@ -27,7 +27,13 @@ exports.addItem = async (req, res, next) => {
     // Add a small delay to simulate the frontend's behavior
     await new Promise(resolve => setTimeout(resolve, 500));
     
-    const item = await Item.create(req.body);
+    // Convert empty number string to null
+    const itemData = { ...req.body };
+    if (itemData.number === '') {
+      itemData.number = null;
+    }
+    
+    const item = await Item.create(itemData);
     res.status(201).json(item);
   } catch (error) {
     next(error);
@@ -49,7 +55,13 @@ exports.updateItem = async (req, res, next) => {
       return res.status(404).json({ message: 'Item not found' });
     }
     
-    await item.update(req.body);
+    // Convert empty number string to null
+    const itemData = { ...req.body };
+    if (itemData.number === '') {
+      itemData.number = null;
+    }
+    
+    await item.update(itemData);
     res.status(200).json(item);
   } catch (error) {
     next(error);
