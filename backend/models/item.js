@@ -7,11 +7,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     number: {
       type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        notEmpty: true
-      }
+      allowNull: true,
+      unique: true
     },
     userid: {
       type: DataTypes.STRING,

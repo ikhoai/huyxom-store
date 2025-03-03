@@ -65,7 +65,10 @@ app.use((err, req, res, next) => {
 const startServer = async () => {
   try {
     // Sync database models with database
-    await sequelize.sync();
+    // WARNING: { alter: true } should ONLY be used in development
+    // For production, use the server.js.production file which doesn't use alter: true
+    // Or run manual SQL migrations instead
+    await sequelize.sync({ alter: true });
     console.log('Database synchronized successfully.');
     
     // Start Express server
