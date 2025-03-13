@@ -132,7 +132,7 @@ function AdminScreen() {
         </div>
       </div>
 
-      <div className="search-container admin-search">
+      <div className="">
         <form onSubmit={handleSearch} className="search-bar">
           <input
             type="text"
