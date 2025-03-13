@@ -8,7 +8,7 @@ services:
       dockerfile: Dockerfile
     container_name: huyxom-frontend
     ports:
-      - "80:80"
+      - "81:81"
     depends_on:
       - backend
     networks:
