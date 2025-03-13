@@ -71,7 +71,7 @@ services:
     image: dpage/pgadmin4
     container_name: huyxom-pgadmin
     ports:
-      - "8080:80"
+      - "8081:80"
     environment:
       - PGADMIN_DEFAULT_EMAIL=admin@huyxom.com
       - PGADMIN_DEFAULT_PASSWORD=adminpgadmin
