@@ -123,13 +123,20 @@ function ItemModal({ item, onSave, onClose }) {
           <div style={{ display: 'flex', gap: '20px' }}>
             <div className="form-group" style={{ flex: 1 }}>
               <label htmlFor="type">Loại</label>
-              <input
-                type="text"
+              <select
                 id="type"
                 name="type"
                 value={formData.type}
                 onChange={handleChange}
-              />
+              >
+                <option value="">-- Chọn loại --</option>
+                <option value="Quần Áo">Quần Áo</option>
+                <option value="Giầy dép">Giầy dép</option>
+                <option value="Đồng hồ">Đồng hồ</option>
+                <option value="Mỹ Phẩm">Mỹ Phẩm</option>
+                <option value="Đồ Gia Dụng">Đồ Gia Dụng</option>
+                <option value="Thực Phẩm">Thực Phẩm</option>
+              </select>
             </div>
             
             <div className="form-group" style={{ flex: 1 }}>
@@ -172,27 +179,66 @@ function ItemModal({ item, onSave, onClose }) {
             />
           </div>
           
-          <div className="form-row">
-            <div className="form-group checkbox">
+          <div className="form-row" style={{ margin: '25px 0' }}>
+            <div className="form-group checkbox" style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              marginRight: '30px' 
+            }}>
               <input
                 type="checkbox"
                 id="sold"
                 name="sold"
                 checked={formData.sold}
                 onChange={handleChange}
+                style={{ 
+                  width: '22px', 
+                  height: '22px',
+                  marginRight: '10px',
+                  accentColor: 'var(--primary-color)',
+                  cursor: 'pointer'
+                }}
               />
-              <label htmlFor="sold">Đã Bán</label>
+              <label 
+                htmlFor="sold" 
+                style={{ 
+                  fontSize: '1rem', 
+                  fontWeight: '500',
+                  cursor: 'pointer'
+                }}
+              >
+                Đã Bán
+              </label>
             </div>
             
-            <div className="form-group checkbox">
+            <div className="form-group checkbox" style={{ 
+              display: 'flex', 
+              alignItems: 'center' 
+            }}>
               <input
                 type="checkbox"
                 id="paid"
                 name="paid"
                 checked={formData.paid}
                 onChange={handleChange}
+                style={{ 
+                  width: '22px', 
+                  height: '22px',
+                  marginRight: '10px',
+                  accentColor: 'var(--primary-color)',
+                  cursor: 'pointer'
+                }}
               />
-              <label htmlFor="paid">Đã Thanh Toán</label>
+              <label 
+                htmlFor="paid" 
+                style={{ 
+                  fontSize: '1rem', 
+                  fontWeight: '500',
+                  cursor: 'pointer'
+                }}
+              >
+                Đã Thanh Toán
+              </label>
             </div>
           </div>
           
