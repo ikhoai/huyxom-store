@@ -641,7 +641,7 @@ tr:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -663,6 +663,7 @@ tr:hover {
   max-height: 90vh;
   overflow-y: auto;
   animation: slideUp 0.3s ease;
+  border: 1px solid var(--border-color);
 }
 
 @keyframes slideUp {
@@ -726,6 +727,7 @@ form {
   border-radius: var(--radius-sm);
   font-size: 1rem;
   transition: var(--transition);
+  background-color: #f5f6f9;
 }
 
 .form-group input:focus,
@@ -734,6 +736,7 @@ form {
   border-color: var(--primary-color);
   outline: 0;
   box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
+  background-color: #ffffff;
 }
 
 .form-row {

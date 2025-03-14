@@ -70,28 +70,30 @@ function ItemModal({ item, onSave, onClose }) {
           <button className="close-button" onClick={onClose}>×</button>
         </div>
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="userid">Mã Người Dùng</label>
-            <input
-              type="text"
-              id="userid"
-              name="userid"
-              value={formData.userid}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          
-          <div className="form-group">
-            <label htmlFor="phone">Số Điện Thoại</label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={formData.phone || ''}
-              onChange={handleChange}
-              placeholder="Nhập số điện thoại liên hệ"
-            />
+          <div style={{ display: 'flex', gap: '20px' }}>
+            <div className="form-group" style={{ flex: 1 }}>
+              <label htmlFor="userid">Mã Người Dùng</label>
+              <input
+                type="text"
+                id="userid"
+                name="userid"
+                value={formData.userid}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            
+            <div className="form-group" style={{ flex: 1 }}>
+              <label htmlFor="phone">Số Điện Thoại</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone || ''}
+                onChange={handleChange}
+                placeholder="Nhập số điện thoại liên hệ"
+              />
+            </div>
           </div>
           
           <div className="form-group">
@@ -118,15 +120,34 @@ function ItemModal({ item, onSave, onClose }) {
             />
           </div> */}
           
-          <div className="form-group">
-            <label htmlFor="type">Loại</label>
-            <input
-              type="text"
-              id="type"
-              name="type"
-              value={formData.type}
-              onChange={handleChange}
-            />
+          <div style={{ display: 'flex', gap: '20px' }}>
+            <div className="form-group" style={{ flex: 1 }}>
+              <label htmlFor="type">Loại</label>
+              <input
+                type="text"
+                id="type"
+                name="type"
+                value={formData.type}
+                onChange={handleChange}
+              />
+            </div>
+            
+            <div className="form-group" style={{ flex: 1 }}>
+              <label htmlFor="priceVND">Giá (VNĐ)</label>
+              <input
+                type="number"
+                id="priceVND"
+                name="priceVND"
+                value={formData.priceVND || ''}
+                onChange={handleChange}
+                min="0"
+                step="1000"
+                required
+              />
+              <small className="form-text">
+                Tương đương: {formatVND(formData.priceVND || 0)} VNĐ
+              </small>
+            </div>
           </div>
           
           <div className="form-group">
@@ -149,23 +170,6 @@ function ItemModal({ item, onSave, onClose }) {
               value={formData.picture}
               onChange={handleChange}
             />
-          </div>
-          
-          <div className="form-group">
-            <label htmlFor="priceVND">Giá (VNĐ)</label>
-            <input
-              type="number"
-              id="priceVND"
-              name="priceVND"
-              value={formData.priceVND || ''}
-              onChange={handleChange}
-              min="0"
-              step="1000"
-              required
-            />
-            <small className="form-text">
-              Tương đương: {formatVND(formData.priceVND || 0)} VNĐ
-            </small>
           </div>
           
           <div className="form-row">
